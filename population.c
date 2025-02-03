@@ -213,10 +213,11 @@ void mutationClones(Population *population)
 
  (void)population;
   Ac *ac; 
-  int nbMutations = population->nbClones;
-  for (int i = 0; i < population->nbClones-1;i++) {
+  //int nbMutations = population->nbClones;
+  for (int i = 0; i < population->nbClones;i++) {
     ac = &population->clones[i];
-    muteAc(ac, nbMutations-i);
+    //muteAc(ac, nbMutations-i);
+    muteAc(ac, 1);
   }
 
  /* A completer ... */
@@ -236,23 +237,16 @@ void selectionMeilleursEtClonesMutes(Population *population)
 
   //Première version
   //Récupération de l'index du moins bon des meilleurs chez les individus
-  int offset = population->nbIndividus - population->nbClones;
-
-  Ac *individu; //Non muté 
-  Ac *clone; //muté 
+  int offset = population->nbIndividus - population->nbClones; //100-50 = 50 
 
   for (int i = 0; i < population->nbClones; i++) {
     
-    individu = &population->individus[offset+i]; 
-    clone = &population->clones[i];
-
     //Le clone muté est meilleur que l'individu
-    if (clone->cout < individu->cout) {
-      individu = clone; 
-    } else {
-      clone = individu;
-    }
-    
+    if (population->individus[offset+i].cout 
+    > population->clones[i].cout) 
+    {
+      population->individus[offset+i] = population->clones[i]; 
+    } 
   }
 
  /* A completer ... */
@@ -271,7 +265,7 @@ int nbIndividusNonClone = population->nbIndividus - population->nbClones;
 Ac *individu;
 for (int i = 0; i < nbIndividusNonClone; i++) {
   individu = &population->individus[i];
-  muteAc(individu, nbIndividusNonClone - i); // Plus il est à gauche plus il est muté 
+  muteAc(individu, 1); // Plus il est à gauche plus il est muté 
 }
 
 

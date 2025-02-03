@@ -289,8 +289,8 @@ int main(int argc, char** argv)
   clonageMeilleurs(&p); //Clone les meilleurs 
   mutationClones(&p); //Effectue les mutations sur les clones
   selectionMeilleursEtClonesMutes(&p);
-  //mutationMoinsBons(&p);
   remplacementMauvaisParNouveaux(&p, nbNouveaux);
+  //mutationMoinsBons(&p);
 
   /* Fin a completer !! */
 
