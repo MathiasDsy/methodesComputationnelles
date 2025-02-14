@@ -223,6 +223,37 @@ void mutationClones(Population *population)
  /* A completer ... */
 }
 
+// //PREMIERE VERSION
+// void selectionMeilleursEtClonesMutes(Population *population)
+// {
+
+// /*** Les meilleurs et les clones sont compares                       ***/
+// /*** Chaque couple (meilleur,clone) est evalue...                    ***/
+// /*** Et on garde le meilleur des deux                                ***/
+// /*** Autre possibilite: tri des meilleurs et des clones (ensemble)   ***/
+// /*** Et on garde les meilleurs...                                    ***/
+// /*** LES DEUX VERSIONS SONT A FAIRE ET DOIVENT ETRE COMPAREES        ***/
+
+//  (void)population;
+
+//   //Première version
+//   //Récupération de l'index du moins bon des meilleurs chez les individus
+//   int offset = population->nbIndividus - population->nbClones; //100-50 = 50 
+
+//   for (int i = 0; i < population->nbClones; i++) {
+    
+//     //Le clone muté est meilleur que l'individu
+//     if (population->individus[offset+i].cout 
+//     > population->clones[i].cout) 
+//     {
+//       population->individus[offset+i] = population->clones[i]; 
+//     } 
+//   }
+
+//  /* A completer ... */
+// }
+
+//DEUXIEME VERSION
 void selectionMeilleursEtClonesMutes(Population *population)
 {
 
@@ -235,9 +266,11 @@ void selectionMeilleursEtClonesMutes(Population *population)
 
  (void)population;
 
-  //Première version
-  //Récupération de l'index du moins bon des meilleurs chez les individus
+
+
   int offset = population->nbIndividus - population->nbClones; //100-50 = 50 
+
+  triSousPopulation(population, offset, population->nbClones*2); 
 
   for (int i = 0; i < population->nbClones; i++) {
     
@@ -248,9 +281,8 @@ void selectionMeilleursEtClonesMutes(Population *population)
       population->individus[offset+i] = population->clones[i]; 
     } 
   }
-
- /* A completer ... */
 }
+
 
 /*** Les moins bons doivent etre a gauche (apres un tri par exemple) ***/
 void mutationMoinsBons(Population *population)

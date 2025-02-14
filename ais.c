@@ -289,8 +289,21 @@ int main(int argc, char** argv)
   clonageMeilleurs(&p); //Clone les meilleurs 
   mutationClones(&p); //Effectue les mutations sur les clones
   selectionMeilleursEtClonesMutes(&p);
-  remplacementMauvaisParNouveaux(&p, nbNouveaux);
-  //mutationMoinsBons(&p);
+  mutationMoinsBons(&p);
+
+  if (tour % NBGENERATIONSINJECTION == 0) {
+    /*
+    => Peut être à voir pour trier avant
+    => Cependant l'algorithme est un quicksort O(n log n)
+    => Le tri entier prend du temps est n'est pas forcément le plus EFFICACE
+    => On recherche un compromis entre optimisation du résultat et du temps
+  
+    
+    */
+    
+    //triPopulation(&p);               /* Pour trouver le meilleur, la    */
+    remplacementMauvaisParNouveaux(&p, nbNouveaux);
+  }
 
   /* Fin a completer !! */
 
