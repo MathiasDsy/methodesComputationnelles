@@ -244,7 +244,7 @@ int main(int argc, char** argv)
  genereCarte(&carte,COTECARTE);
 #endif
 
- dessineCarte(fdGnuplot,&carte);
+ //dessineCarte(fdGnuplot,&carte);
 
  sleep(3);
 
@@ -287,9 +287,9 @@ int main(int argc, char** argv)
   /* A completer ... */
   
   clonageMeilleurs(&p); //Clone les meilleurs 
-  mutationClones(&p); //Effectue les mutations sur les clones
-  selectionMeilleursEtClonesMutes(&p);
-  mutationMoinsBons(&p);
+  //mutationClones(&p); //Effectue les mutations sur les clones
+  //selectionMeilleursEtClonesMutes(&p);
+  //mutationMoinsBons(&p);
 
   if (tour % NBGENERATIONSINJECTION == 0) {
     /*
@@ -302,7 +302,7 @@ int main(int argc, char** argv)
     */
     
     //triPopulation(&p);               /* Pour trouver le meilleur, la    */
-    remplacementMauvaisParNouveaux(&p, nbNouveaux);
+    //remplacementMauvaisParNouveaux(&p, nbNouveaux);
   }
 
   /* Fin a completer !! */
@@ -316,11 +316,11 @@ int main(int argc, char** argv)
   {
    cloneAc(&meilleur,&LeMeilleur);
 
-   dessineParcoursAc(fdGnuplot,&LeMeilleur);
+   //dessineParcoursAc(fdGnuplot,&LeMeilleur);
    printCoutAc(&LeMeilleur);
 
    ecrireCout(fdCout,tour,LeMeilleur.cout);
-   visualiserCout(fdGnuplotCout,fileNameCout);
+   //visualiserCout(fdGnuplotCout,fileNameCout);
   }
 
 #if NBVILLES==8 || NBVILLES==16 || NBVILLES==30
@@ -336,8 +336,9 @@ int main(int argc, char** argv)
  /*********************************************************/
 
  printf("\n*** Voici la meilleure solution trouvee ***\n");
- dessineParcoursAc(fdGnuplot,&LeMeilleur);
- dessineParcoursAc(fdBest,&LeMeilleur);
+ //dessineParcoursAc(fdGnuplot,&LeMeilleur);
+ //dessineParcoursAc(fdBest,&LeMeilleur);
+ printf("final");
  printCoutAc(&LeMeilleur);
  printf("\n*** Avec %s %d %d %d %d %d\n",argv[0],nbIndividus,
                                         nN,dD,nbGenerations,
@@ -359,7 +360,7 @@ int main(int argc, char** argv)
  }
 #endif
 
-#if 1
+#if 0
  sleep(2);                                   /* Dessin des          */
  dessineIndividusPopulation(fdGnuplot,&p,5); /* meilleurs individus */
 #endif
@@ -368,9 +369,9 @@ int main(int argc, char** argv)
 
  fclose(fdCout);
 
- closeGnuplot(fdGnuplot);
- closeGnuplot(fdGnuplotCout);
- closeGnuplot(fdBest);
+ //closeGnuplot(fdGnuplot);
+ //closeGnuplot(fdGnuplotCout);
+ //closeGnuplot(fdBest);
 
  exit(EXIT_SUCCESS);
 }
